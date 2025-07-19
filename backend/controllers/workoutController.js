@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 
 // get all workouts
 const getWorkouts = async (req, res) => {
-    const workouts = await Workout.find({}).sort({createdAt: -1})
+    const user_id = req.user._id;
+
+    const workouts = await Workout.find({user_id}).sort({createdAt: -1})
 
     res.status(200).json(workouts)
 }
@@ -35,12 +37,13 @@ const createWorkout = async (req, res) => {
         emptyFields.push('title')
     }
 
-    if (!load === undefined) {
-        emptyFields.push('load')
+    // Correct way: check for null or undefined, but allow 0
+    if (!load) {
+        emptyFields.push('load');
     }
 
     if (!reps) {
-        emptyFields.push('reps')
+        emptyFields.push('reps');
     }
 
     if (emptyFields.length > 0) {
@@ -49,7 +52,8 @@ const createWorkout = async (req, res) => {
 
     // add document to database
     try {
-        const workout = await Workout.create({title, load, reps})
+        const user_id = req.user._id;
+        const workout = await Workout.create({title, load, reps, user_id})
         res.status(200).json(workout)
     } catch (error) {
         res.status(400).json({error: error.message})
