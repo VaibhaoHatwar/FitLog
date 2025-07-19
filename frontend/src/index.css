@@ -1,16 +1,27 @@
-/* google font */
+/* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
-/* layout */
+/* Variables */
 :root {
   --primary: #1aac83;
   --error: #e7195a;
 }
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+}
 body {
   background: #f1f1f1;
   margin: 0;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Layout */
 header {
   background: #fff;
 }
@@ -21,18 +32,15 @@ header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
-header a {
-  color: #333;
-  text-decoration: none;
-}
-.pages{
+.pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
 }
 
-/* homepage */
+/* Home Page */
 .home {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -44,7 +52,7 @@ header a {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 .workout-details h4 {
   margin: 0 0 10px 0;
@@ -67,8 +75,7 @@ header a {
   color: #333;
 }
 
-
-/* new workout form */
+/* Forms */
 label, input {
   display: block;
 }
@@ -79,7 +86,6 @@ input {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 form button {
   background: var(--primary);
@@ -102,10 +108,11 @@ input.error {
   border: 1px solid var(--error);
 }
 
-/* navbar */
+/* Navbar */
 nav {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 nav a {
   margin-left: 10px;
@@ -121,11 +128,53 @@ nav button {
   font-size: 1em;
   margin-left: 10px;
 }
-/* auth forms */
+
+/* Auth Forms */
 form.signup, form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
   background: #fff;
   border-radius: 4px;
+}
+
+/* 🔁 Responsive Design */
+@media screen and (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .workout-details {
+    width: 100%;
+  }
+
+  form.signup, form.login {
+    margin: 20px 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .workout-details h4 {
+    font-size: 1em;
+  }
+
+  nav button {
+    font-size: 0.9em;
+    padding: 5px 8px;
+  }
+
+  form button {
+    padding: 8px;
+  }
 }
