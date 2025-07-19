@@ -35,7 +35,7 @@ const createWorkout = async (req, res) => {
         emptyFields.push('title')
     }
 
-    if (!load) {
+    if (!load === undefined) {
         emptyFields.push('load')
     }
 
