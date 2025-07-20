@@ -1,17 +1,14 @@
 import express from "express";
+import {
+  loginUser,
+  logoutUser,
+  signupUser,
+} from "../controllers/authController.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.post("/signup", (req, res) => {
-    res.send("Signup route");
-});
-
-router.post("/login", (req, res) => {
-    res.send("Login route");
-});
-
-router.post("/logout", (req, res) => {
-    res.send("Logout route");
-});
+router.post("/signup", signupUser); // create a user
+router.post("/login", loginUser); // login and get token
+router.post("/logout", logoutUser); // clear token
 
 export default router;
