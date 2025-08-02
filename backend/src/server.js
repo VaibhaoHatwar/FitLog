@@ -1,12 +1,14 @@
-import express from "express";
 import dotenv from "dotenv";
+
+import express from "express";
+import workoutRoutes from "./routes/workoutRoutes.js"
 
 dotenv.config();
 
 // Create Express app
 const app = express();
 
-// Middleware (optional now, useful later)
+// Middleware
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -15,13 +17,8 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.get("/", (req, res) => {
-  res.json({ msg: "Welcome to the app" });
-});
-
-app.get("/api", (req, res) => {
-  res.json({ msg: "Welcome to the API" });
-});
+// Handles all workout-related API endpoints
+app.use('/api/workouts', workoutRoutes);
 
 app.get("/health", (req, res) => {
   res.status(200).send("Server is healthy");
