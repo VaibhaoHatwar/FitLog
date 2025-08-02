@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 
 import express from "express";
-import mongoose from "mongoose";
+import { connectDB } from "./config/db.js";
 import workoutRoutes from "./routes/workoutRoutes.js";
 
 dotenv.config();
@@ -29,14 +29,13 @@ app.get("/health", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 // Connect to db
-mongoose
-  .connect(process.env.MONGO_URI)
+connectDB()
   .then(() => {
-    // Listen to requests
     app.listen(PORT, () => {
-      console.log(`✅ Connected to db and listening on http://localhost:${PORT}`);
+      console.log(`🚀 Server is running at http://localhost:${PORT}`);
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.error("❌ Failed to connect to MongoDB:", error.message);
+    process.exit(1); // Exit the process if DB connection fails
   });
