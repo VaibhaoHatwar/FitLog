@@ -1,28 +1,33 @@
 import mongoose from "mongoose";
 import { Workout } from "../models/workoutModel.js";
 
+// GET /api/workouts → fetch all workouts, newest first
 export const getWorkouts = async (req, res) => {
   const workouts = await Workout.find({}).sort({ createdAt: -1 });
 
   res.status(200).json(workouts);
 };
 
+// GET /api/workouts/:id → fetch single workout by ID
 export const getWorkout = async (req, res) => {
-    const {id} = req.params;
+  const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({error: 'No such workout'})
-    }
+  // validate ID format
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such workout" });
+  }
 
-    const workout = await Workout.findById(id);
+  const workout = await Workout.findById(id);
 
-    if (!workout) {
-        return res.status(404).json({error: 'No such workout'})
-    }
+  // if not found
+  if (!workout) {
+    return res.status(404).json({ error: "No such workout" });
+  }
 
-    res.status(200).json(workout)
+  res.status(200).json(workout);
 };
 
+// POST /api/workouts → create a new workout
 export const createWorkout = async (req, res) => {
   const {
     title,
@@ -53,10 +58,43 @@ export const createWorkout = async (req, res) => {
   }
 };
 
-export const deleteWorkout = (req, res) => {
-  res.json({ mssg: "Delete a workout" });
+// DELETE /api/workouts/:id → delete workout by ID
+export const deleteWorkout = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such workout" });
+  }
+
+  const workout = await Workout.findOneAndDelete({ _id: id });
+
+  if (!workout) {
+    return res.status(404).json({ error: "No such workout" });
+  }
+
+  res.status(200).json(workout);
 };
 
-export const updateWorkout = (req, res) => {
-  res.json({ mssg: "Update a workout" });
+// PATCH /api/workouts/:id → update a workout
+export const updateWorkout = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such workout" });
+  }
+
+  const workout = await Workout.findOneAndUpdate(
+    { _id: id },
+    {
+      ...req.body,
+    },
+    {new: true}
+  );
+
+  if (!workout) {
+    return res.status(400).json({ error: "No such workout" });
+  }
+
+  // return updated workout (Note: returns old doc unless you pass {new: true})
+  res.status(200).json(workout);
 };
