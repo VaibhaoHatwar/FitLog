@@ -1,12 +1,84 @@
-# React + Vite
+# Fitness Tracker (MERN Stack with Auth)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured Fitness Tracker web app built using the MERN stack (MongoDB, Express, React, Node.js) with authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- User authentication with email/password (Login & Signup)
+- Track fitness tasks (Completed, Failed, New, Accepted)
+- Role-based dashboards for Admin & Employee
+- Context API for global state management
+- Local storage-based data persistence
+- React Router navigation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📁 Folder Structure
+
+```
+src/
+├── assets/
+├── components/
+│   ├── Navbar.jsx
+│   ├── WorkoutDetails.jsx
+│   └── WorkoutForm.jsx
+├── context/
+│   ├── AuthContext.jsx
+│   └── WorkoutContext.jsx
+├── hooks/
+│   ├── useAuthContext.jsx
+│   ├── useLogin.jsx
+│   ├── useLogout.jsx
+│   ├── useSignup.jsx
+│   └── useWorkoutContext.jsx
+├── pages/
+│   ├── HomePage.jsx
+│   ├── LoginPage.jsx
+│   └── SignupPage.jsx
+├── App.jsx
+├── main.jsx
+├── index.css
+├── index.html
+.gitignore
+README.md
+eslint.config.js
+vite.config.js
+package.json
+```
+
+---
+
+## 🔧 Getting Started
+
+### Prerequisites
+
+- Node.js
+- MongoDB (local or cloud)
+- npm or yarn
+
+### Install Dependencies
+
+```
+npm install
+```
+
+### Start Frontend
+
+```
+npm run dev
+```
+---
+
+## 🔐 Auth Flow
+
+- On login/signup, the user is stored in local storage
+- Context API handles global user/task state
+- Logout clears local storage and state
+
+---
+
+## 🙏 Acknowledgements
+
+Based on Net Ninja's tutorial with modifications.
