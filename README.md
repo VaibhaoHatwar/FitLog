@@ -1,6 +1,6 @@
-# MERN Stack Fitness Tracker
+# FitLog 🏋️‍♂️ - MERN Stack Fitness Tracker
 
-A full-stack fitness tracking app built with the MERN stack (MongoDB, Express, React, Node.js).  
+A full-stack fitness tracking app built with the MERN stack (MongoDB, Express, React, Node.js).
 Users can register, log in, and manage their workout logs through a secure authentication system and a clean UI.
 
 ---
@@ -18,18 +18,19 @@ Users can register, log in, and manage their workout logs through a secure authe
 ## 📁 Folder Structure
 
 ```
-mern-fitness-tracker/
+fitlog/
 ├── backend/
-│   ├── controllers/    # Route logic (e.g., authController.js)
-│   ├── middleware/     # JWT middleware
-│   ├── models/         # Mongoose schemas
-│   ├── routes/         # Express routes
-│   │── server.js       # Entry point
+│   ├── src/
+│   │   ├── config/         # MongoDB connection
+│   │   ├── controllers/    # Route logic (e.g., authController.js)
+│   │   ├── middleware/     # JWT middleware
+│   │   ├── models/         # Mongoose schemas
+│   │   ├── routes/         # Express routes
+│   │   └── server.js       # Entry point
 │   ├── .env
 │   ├── .gitignore
 │   └── package.json
 ├── frontend/
-|                 
 └── README.md
 ```
 
@@ -165,6 +166,16 @@ npm run dev
 ## 🙏 Acknowledgements
 
 Based on Net Ninja's tutorial with modifications.
+
+---
+
+## 📜 License
+This project is under the MIT License.
+
+---
+
+## 🤝 Contributing
+Pull requests are welcome. For major changes, open an issue first to discuss what you'd like to change.
 
 ---
 
