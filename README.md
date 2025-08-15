@@ -15,8 +15,7 @@ Users can register, log in, and manage their workout logs through a secure authe
 
 ---
 
-<details>
-<summary>📂 Project Folder Structure</summary>
+<details><summary>📂 Project Folder Structure</summary>
 
 ## 📁 Folder Structure
 
@@ -85,7 +84,8 @@ JWT_SECRET=your_secret_key
 ## 🚀 Getting Started
 
 ### 1️⃣ Clone the repository
-```git clone https://github.com/yourusername/fitlog.git
+```bash
+git clone https://github.com/yourusername/fitlog.git
 cd fitlog
 ```
 
@@ -111,7 +111,7 @@ npm run dev
 
 ---
 
-## 🚀 Features
+## 🌟 Features
 
 - User authentication with email/password (Login & Signup)
 - Track fitness tasks (Completed, Failed, New, Accepted)
