@@ -15,24 +15,58 @@ Users can register, log in, and manage their workout logs through a secure authe
 
 ---
 
+<details>
+<summary>📂 Project Folder Structure</summary>
+
 ## 📁 Folder Structure
 
 ```
 fitlog/
-├── backend/
-│   ├── src/
-│   │   ├── config/         # MongoDB connection
-│   │   ├── controllers/    # Route logic (e.g., authController.js)
-│   │   ├── middleware/     # JWT middleware
-│   │   ├── models/         # Mongoose schemas
-│   │   ├── routes/         # Express routes
-│   │   └── server.js       # Entry point
-│   ├── .env
-│   ├── .gitignore
-│   └── package.json
-├── frontend/
-└── README.md
+├── backend/ # 🖥 Backend (Node.js + Express + MongoDB)
+│ ├── src/
+│ │ ├── config/ # MongoDB connection setup (db.js)
+│ │ ├── controllers/ # Route logic (e.g., authController.js)
+│ │ ├── middleware/ # JWT authentication middleware
+│ │ ├── models/ # Mongoose schemas
+│ │ ├── routes/ # Express routes
+│ │ └── server.js # Backend entry point
+│ ├── .env # Environment variables
+│ ├── .gitignore
+│ └── package.json
+│
+├── frontend/ # 🎨 Frontend (React + Vite)
+│ ├── src/
+│ │ ├── assets/ # Static assets (images, icons, etc.)
+│ │ ├── components/ # Reusable UI components
+│ │ │ ├── Navbar.jsx
+│ │ │ ├── WorkoutDetails.jsx
+│ │ │ └── WorkoutForm.jsx
+│ │ ├── context/ # React Context API files
+│ │ │ ├── AuthContext.jsx
+│ │ │ └── WorkoutContext.jsx
+│ │ ├── hooks/ # Custom React hooks
+│ │ │ ├── useAuthContext.jsx
+│ │ │ ├── useLogin.jsx
+│ │ │ ├── useLogout.jsx
+│ │ │ ├── useSignup.jsx
+│ │ │ └── useWorkoutContext.jsx
+│ │ ├── pages/ # Page-level components
+│ │ │ ├── HomePage.jsx
+│ │ │ ├── LoginPage.jsx
+│ │ │ └── SignupPage.jsx
+│ │ ├── App.jsx
+│ │ ├── main.jsx
+│ │ ├── index.css
+│ │ └── index.html
+│ ├── .gitignore
+│ ├── eslint.config.js
+│ ├── vite.config.js
+│ └── package.json
+│
+├── LICENSE
+├── README.md
 ```
+</details>
 
 ---
 
@@ -50,7 +84,12 @@ JWT_SECRET=your_secret_key
 
 ## 🚀 Getting Started
 
-### Backend (API Server)
+### 1️⃣ Clone the repository
+```git clone https://github.com/yourusername/fitlog.git
+cd fitlog
+```
+
+### 2️⃣ Backend Setup
 
 ```bash
 cd backend
@@ -58,12 +97,11 @@ npm install
 npm run dev
 ```
 
-> Uses nodemon to run server from `src/server.js`  
-> Your server should start on: http://localhost:5000
+> Runs with nodemon from `src/server.js`  
+> Server runs on: http://localhost:5000
 
----
 
-## 🚀 Frontend Setup
+### 3️⃣ Frontend Setup
 
 ```bash
 cd frontend  
@@ -84,62 +122,6 @@ npm run dev
 
 ---
 
-## 📁 Folder Structure
-
-```
-src/
-├── assets/
-├── components/
-│   ├── Navbar.jsx
-│   ├── WorkoutDetails.jsx
-│   └── WorkoutForm.jsx
-├── context/
-│   ├── AuthContext.jsx
-│   └── WorkoutContext.jsx
-├── hooks/
-│   ├── useAuthContext.jsx
-│   ├── useLogin.jsx
-│   ├── useLogout.jsx
-│   ├── useSignup.jsx
-│   └── useWorkoutContext.jsx
-├── pages/
-│   ├── HomePage.jsx
-│   ├── LoginPage.jsx
-│   └── SignupPage.jsx
-├── App.jsx
-├── main.jsx
-├── index.css
-├── index.html
-.gitignore
-README.md
-eslint.config.js
-vite.config.js
-package.json
-```
-
----
-
-## 🔧 Getting Started
-
-### Prerequisites
-
-- Node.js
-- MongoDB (local or cloud)
-- npm or yarn
-
-### Install Dependencies
-
-```
-npm install
-```
-
-### Start Frontend
-
-```
-npm run dev
-```
----
-
 ## 🔐 Auth Flow
 
 - On login/signup, the user is stored in local storage
@@ -158,8 +140,11 @@ npm run dev
 
 ## 📦 Deployment
 
-- Recommended: Vercel (Frontend) + Render or Railway (Backend)
-- Setup `.env` for secrets
+- Frontend: Vercel
+
+- Backend: Render / Railway
+
+- Configure .env files with secrets
 
 ---
 
