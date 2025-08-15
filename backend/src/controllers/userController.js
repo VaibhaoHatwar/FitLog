@@ -1,12 +1,12 @@
-const User = require("../models/userModel");
-const JWT = require("jsonwebtoken");
+import { User } from "../models/userModel.js";
+import JWT from "jsonwebtoken";
 
 const createToken = (_id) => {
   return JWT.sign({ _id }, process.env.SECRET, { expiresIn: "3d" });
 };
 
 // login user
-const loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -22,7 +22,7 @@ const loginUser = async (req, res) => {
 };
 
 // signup user
-const signupUser = async (req, res) => {
+export const signupUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -36,5 +36,3 @@ const signupUser = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
-module.exports = { loginUser, signupUser };
